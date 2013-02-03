@@ -26,7 +26,7 @@ public class UsarFormulario {
 	
 	public static void main(String args[]){
 		
-		Formulario form = new Formulario();
+		Formulario form;
 		Campo campo;
 		boolean fim1 = false;
 		String entr = "";
@@ -34,7 +34,9 @@ public class UsarFormulario {
 		String valor = "";
 		
 		while(fim1 == false){
-			entr = entrada("Formulário:\n\n1- Nome;\n2- Idade;\n3- E-mail;\n4- Senha;\n5- sair;");
+			form = new Formulario();
+			entr = entrada("Formulário:\n\n1- Nome;\n2- Idade;\n3- E-mail 1(limite 50);\n4- E-mail 2(limite 200);" +
+					"\n5- Senha;\n6- sair;");
 			cancel = entr;
 			
 			if (cancel == null){
@@ -67,7 +69,7 @@ public class UsarFormulario {
 			else if(entr.equals("3")){
 				ValidadorDeCampo email = new ValidadorEmail();
 				String id = "email";
-				String label = "E-mail completo: ";
+				String label = "E-mail 1 completo (limite 50 caracteres): ";
 				campo = new Campo(id, label, email);
 				valor = entrada(label);
 				campo.setValor(valor);
@@ -76,6 +78,17 @@ public class UsarFormulario {
 				
 			}
 			else if(entr.equals("4")){
+				ValidadorDeCampo email = new ValidadorEmail();
+				String id = "email";
+				String label = "E-mail 2 completo(limite 200 caracteres): ";
+				campo = new Campo(id, label, email);
+				valor = entrada(label);
+				campo.setValor(valor);
+				form.addCampo(campo);
+				mostrar("Validade do e-mail: " + form.setValor(id, valor));
+				
+			}
+			else if(entr.equals("5")){
 				ValidadorDeCampo senha = new ValidadorSenha();
 				String id = "senha";
 				String label = "Senha: ";
@@ -86,7 +99,7 @@ public class UsarFormulario {
 				mostrar("Validade da senha: " + form.setValor(id, valor));
 				
 			}
-			else if(entr.equals("5")){
+			else if(entr.equals("6")){
 				fim1 = true;
 				mostrar("Programa finalizado!");
 				
