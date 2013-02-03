@@ -1,14 +1,12 @@
 package ui;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.swing.JOptionPane;
 
 import modelo.Campo;
 import modelo.Formulario;
 import modelo.ValidadorDeCampo;
 import modelo.ValidadorEmail;
+import modelo.ValidadorEmail2;
 import modelo.ValidadorInteiro;
 import modelo.ValidadorSenha;
 import modelo.ValidadorTexto;
@@ -67,7 +65,7 @@ public class UsarFormulario {
 				
 			}
 			else if(entr.equals("3")){
-				ValidadorDeCampo email = new ValidadorEmail();
+				ValidadorDeCampo email = new ValidadorEmail(50);
 				String id = "email";
 				String label = "E-mail 1 completo (limite 50 caracteres): ";
 				campo = new Campo(id, label, email);
@@ -78,7 +76,7 @@ public class UsarFormulario {
 				
 			}
 			else if(entr.equals("4")){
-				ValidadorDeCampo email = new ValidadorEmail();
+				ValidadorDeCampo email = new ValidadorEmail(200);
 				String id = "email";
 				String label = "E-mail 2 completo(limite 200 caracteres): ";
 				campo = new Campo(id, label, email);
